@@ -33,6 +33,23 @@ const NavBar = () => {
           Home
         </NavLink>
 
+       
+        <NavLink
+          className={({ isActive }) => (isActive ? activelink : normallink)}
+          to="/templates"
+        >
+         Templates
+        </NavLink>
+
+
+
+
+        <NavLink
+          className={({ isActive }) => (isActive ? activelink : normallink)}
+          to="/aboutus"
+        >
+         About US
+        </NavLink>
         {user?.uid ? (
           <>
             <NavLink
@@ -51,31 +68,15 @@ const NavBar = () => {
             Login
           </NavLink>
         )}
-        <NavLink
-          className={({ isActive }) => (isActive ? activelink : normallink)}
-          to="/templates"
-        >
-         Templates
-        </NavLink>
-
-
-
-
-        <NavLink
-          className={({ isActive }) => (isActive ? activelink : normallink)}
-          to="/aboutus"
-        >
-         About US
-        </NavLink>
       </li>
 
       <li>
         {" "}
         {/* theme change here */}
         <div className="font-bold bg-gradient-to-r from-indigo-400 via-purple-500 to-indigo-600  text-neutral rounded-3xl mt-7 h-1/2">
-          <label className="label">
+          {/* <label className="label">
             <span className="label-text text-neutral">Select the Theme</span>
-          </label>
+          </label> */}
           <select
             data-choose-theme
             className="select select-bordered select-sm "
