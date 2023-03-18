@@ -10,17 +10,19 @@ const attrributes = ["currentPosition", "mobile", "address", "education", "skill
 
 const collectInfo = async (prompt, email) => {
     var cvInfo = new CvInfo();
-    cvInfo["useremail"] = encryptData(email);
-
+    //cvInfo["useremail"] = encryptData(email);
+    cvInfo["useremail"] = email;
     for (let i = 0; i < listOfQuestion.length; i++) {
         question = prompt + "From this passage what is the " + listOfQuestion[i] + " information. Just give the output nothing else. If answer is not available then return Nothing in exact answer format without heading.";
         answer = await getInfoWithOpenAi(question, 100)
         console.log(answer);
         if (!answer.includes("Nothing")) {
-            cvInfo[attrributes[i]] = encryptData(answer);
+            //cvInfo[attrributes[i]] = encryptData(answer);
+            cvInfo[attrributes[i]] = answer;
         }
     }
-    const availableData = await CvInfo.findOne({ useremail: encryptData(email) });
+    //const availableData = await CvInfo.findOne({ useremail: encryptData(email) });
+    const availableData = await CvInfo.findOne({ useremail: email });
     if (availableData) {
         cvInfo["_id"] = availableData["_id"];
         for(var i=7;i<attrributes.length;i++){
@@ -45,26 +47,26 @@ const collectInfo = async (prompt, email) => {
 
 
 const retrieveInfo = asyncHandler(async(req,res)=>{
-    const cvInfo = await CvInfo.findOne({useremail: encryptData(req.body.email)});
+    //const cvInfo = await CvInfo.findOne({useremail: encryptData(req.body.email)});
+    const cvInfo = await CvInfo.findOne({useremail: req.body.email});
     if (!cvInfo){
         res.status(404);
         throw new Error("Information not found");
     }
     console.log(attrributes.length)
-    for (var i=0; i<attrributes.length;i++){
-        cvInfo[attrributes[i]] = cvInfo[attrributes[i]].replace(/[\r\n]/gm, '');
-        if(cvInfo[attrributes[i]] !=""){
-            cvInfo[attrributes[i]] = decryptData (cvInfo[attrributes[i]])
-            console.log(cvInfo[attrributes[i]])
-        }
-        else{
-            cvInfo[attrributes[i]] = cvInfo[attrributes[i]]
-            console.log(cvInfo[attrributes[i]])
-        }
-        
-    }
+    //for (var i=0; i<attrributes.length;i++){
+    //    cvInfo[attrributes[i]] = cvInfo[attrributes[i]].replace(/[\r\n]/gm, '');
+    //    if(cvInfo[attrributes[i]] !=""){
+    //        //cvInfo[attrributes[i]] = decryptData (cvInfo[attrributes[i]])
+    //        console.log(cvInfo[attrributes[i]])
+    //    }
+    //    else{
+    //        cvInfo[attrributes[i]] = cvInfo[attrributes[i]]
+    //        console.log(cvInfo[attrributes[i]])
+    //    }
+    //    
+    //}
 
-    console.log(cvInfo)
     res.status(200).json({cv:cvInfo});
 });
 
