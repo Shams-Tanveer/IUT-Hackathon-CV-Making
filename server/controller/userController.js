@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler");
+const { getJWT } = require("../jwt/jwtAuth");
 const User = require("../model/userModel");
 
 
@@ -18,7 +19,9 @@ const registerUser = asyncHandler(async(req,res)=>{
     
     const registeredUser = await user.save();
     if(registeredUser){
-        res.status(200).json({message:"Registered Successfully."});
+        const accessToken = getJWT(registerUser.email);
+        console.log(accessToken);
+        res.status(200).json({accessToken:accessToken});
     }else{
         res.status(400);
         throw new Error("User registration unsuccessful");
