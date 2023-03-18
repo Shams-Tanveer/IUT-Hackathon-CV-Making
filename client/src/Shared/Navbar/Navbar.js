@@ -133,15 +133,31 @@ const NavBar = () => {
 
       <div className="navbar-end">
         {user?.uid && (
-          <div>
-            <div className="avatar">
-              {" "}
-              <div className="w-24 rounded-full">
-                <img src={user?.photoURL} alt="" />
-              </div>{" "}
+          <div className="dropdown dropdown-end">
+          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <div className="w-20 rounded-full">
+            <img src={user?.photoURL} alt="" />
+        
             </div>
-            <p className="text-acceent font-bold text-xl">{user.displayName}</p>
-          </div>
+            <p className="text-acceent font-bold ">{user.displayName}</p>
+          </label>
+          <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            <li>
+            <NavLink to="/updateProfile">Update Profile</NavLink>
+            </li>
+            {/* <li><a>Settings</a></li>
+            <li><a>Logout</a></li> */}
+          </ul>
+        </div>
+          // <div>
+          //   <div className="avatar">
+          //     {" "}
+          //     <div className="w-24 rounded-full">
+          //       <img src={user?.photoURL} alt="" />
+          //     </div>{" "}
+          //   </div>
+          //   <p className="text-acceent font-bold text-xl">{user.displayName}</p>
+          // </div>
         )}
       </div>
     </div>

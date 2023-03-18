@@ -144,45 +144,7 @@ const UpdateProfile = () => {
     };
   };
 
-  // // function for inserting user in database
-
-  // const saveUser = (name, email, photoURL, role, isverified) => {
-  //   const newUser = {
-  //     name,
-  //     email,
-  //     photoURL,
-  //     role,
-  //     isverified,
-  //   };
-  //   console.log("from save post", newUser);
-  //   fetch(`https://laptop-hut-server.vercel.app/user?email=${email}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(newUser),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       getUserToken(email);
-  //     });
-  // };
-
-  // const getUserToken = (email) => {
-  //   fetch(`https://laptop-hut-server.vercel.app/jwt?email=${email}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.accessToken) {
-  //         localStorage.setItem("accessToken", data.accessToken);
-
-  //         toast.success("Sign Up Successful!");
-
-  //         navigate("/");
-  //       }
-  //     });
-  // };
-
+  
   return (
     <div>
       <div className="text-left" >

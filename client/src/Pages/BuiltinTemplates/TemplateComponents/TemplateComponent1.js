@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiFillTwitterCircle ,AiFillLinkedin,AiFillYoutube } from "react-icons/ai";
 
 const TemplateComponent1 = () => {
     return (
@@ -18,7 +19,7 @@ const TemplateComponent1 = () => {
 
   <div class="py-10  flex flex-wrap justify-center">
       <div class="w-6/12 sm:w-4/12 px-4">
-        <img src={deved} alt="..." class="shadow rounded-full max-w-full h-auto align-middle border-none" />
+        {/* <img src={deved} alt="..." class="shadow rounded-full max-w-full h-auto align-middle border-none" /> */}
     </div>
   </div>
 
