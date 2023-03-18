@@ -53,9 +53,19 @@ const NavBar = () => {
         )}
         <NavLink
           className={({ isActive }) => (isActive ? activelink : normallink)}
-          to="/blogs"
+          to="/templates"
         >
-          Blogs
+         Templates
+        </NavLink>
+
+
+
+
+        <NavLink
+          className={({ isActive }) => (isActive ? activelink : normallink)}
+          to="/aboutus"
+        >
+         About US
         </NavLink>
       </li>
 
@@ -86,7 +96,7 @@ const NavBar = () => {
   });
 
   return (
-    <div className="navbar bg-secondary mb-10 ">
+    <div className="navbar bg-secondary  ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

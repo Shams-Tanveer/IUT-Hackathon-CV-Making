@@ -1,4 +1,7 @@
 import Main from "../../Layouts/Main/Main";
+import Community from "../../Pages/Community/Community";
+import CustomBuild from "../../Pages/CustomBuild/CustomBuild";
+import Popular from "../../Pages/Popular/Popular";
 import Login from "../../User Creation/Login/Login";
 import Signup from "../../User Creation/Signup/Signup";
 
@@ -18,6 +21,19 @@ const router=createBrowserRouter([
                     {
                         path:"/",
                         element:<Home></Home>
+                    },
+                    {
+                        path:"/custom",
+                        element:<CustomBuild></CustomBuild>
+                    },
+                    
+                    {
+                        path:"/community",
+                        element:<Community></Community>
+                    },
+                    {
+                        path:"popular",
+                        element:<Popular></Popular>
                     }
                 ]
             },
