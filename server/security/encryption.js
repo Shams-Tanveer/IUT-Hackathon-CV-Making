@@ -36,19 +36,3 @@ const decryptData = (encryptedData)=> {
 }
 
 module.exports = {encryptData,decryptData};
-
-//onst cipher = crypto.createCipheriv(algorithm, Securitykey, initVector);
-//
-//et encryptedData = cipher.update(message, "utf-8", "hex");
-//
-//ncryptedData += cipher.final("hex");
-//
-//onsole.log("Encrypted message: " + encryptedData);
-//
-//onst decipher = crypto.createDecipheriv(algorithm, Securitykey, initVector);
-//
-//et decryptedData = decipher.update(encryptedData, "hex", "utf-8");
-//
-//ecryptedData += decipher.final("utf8");
-//
-//onsole.log("Decrypted message: " + decryptedData);
