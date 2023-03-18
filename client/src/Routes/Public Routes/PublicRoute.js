@@ -4,6 +4,7 @@ import BuiltinTemplates from "../../Pages/BuiltinTemplates/BuiltinTemplates";
 import Community from "../../Pages/Community/Community";
 import CustomBuild from "../../Pages/CustomBuild/CustomBuild";
 import Popular from "../../Pages/Popular/Popular";
+import UpdateProfile from "../../Pages/Update Profile/UpdateProfile";
 import Login from "../../User Creation/Login/Login";
 import Signup from "../../User Creation/Signup/Signup";
 
@@ -54,6 +55,10 @@ const router=createBrowserRouter([
             {
                 path:"/aboutus",
                 element:<Aboutus></Aboutus>
+            },
+            {
+                path:"/updateProfile",
+                element:<UpdateProfile></UpdateProfile>
             }
         ]
     }
