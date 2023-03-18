@@ -4,12 +4,14 @@ import { themeChange } from "theme-change";
 // import logo from "../../../assets/logo.png";
 import { AuthContext } from "../../Contexts/AuthContext/AuthProvider";
 
+import {BsBriefcase} from  'react-icons/bs';
+
 const NavBar = () => {
   const themeValues = ["light", "dark"];
 
   const activelink =
-    "text-xl font-bold bg-gradient-to-r from-indigo-400 via-purple-500 to-indigo-600 Text-gradient text-white rounded-3xl h-1/2  ";
-  const normallink = "text-xl my-3 font-semibold text-neutral";
+    "text-xl font-bold bg-gradient-to-r from-[#374151] to-[#374151] Text-gradient text-white rounded-2xl  ";
+  const normallink = "text-xl my-3 font-semibold  text-error";
 
   const { user, logout } = useContext(AuthContext);
 
@@ -25,6 +27,14 @@ const NavBar = () => {
 
   const navBarItems = (
     <>
+
+      
+
+     
+      
+
+      
+
       <li>
         <NavLink
           className={({ isActive }) => (isActive ? activelink : normallink)}
@@ -70,25 +80,7 @@ const NavBar = () => {
         )}
       </li>
 
-      <li>
-        {" "}
-        {/* theme change here */}
-        <div className="font-bold bg-gradient-to-r from-indigo-400 via-purple-500 to-indigo-600  text-neutral rounded-3xl mt-7 h-1/2">
-          {/* <label className="label">
-            <span className="label-text text-neutral">Select the Theme</span>
-          </label> */}
-          <select
-            data-choose-theme
-            className="select select-bordered select-sm "
-          >
-            {themeValues.map((value) => (
-              <option key={value.toLowerCase()} value={value.toLowerCase()}>
-                {value.toString()}
-              </option>
-            ))}
-          </select>
-        </div>
-      </li>
+      
     </>
   );
 
@@ -97,7 +89,7 @@ const NavBar = () => {
   });
 
   return (
-    <div className="navbar bg-secondary  ">
+    <div className="navbar bg-neutral  ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -124,9 +116,12 @@ const NavBar = () => {
             {navBarItems}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-3xl font-bold mx-5 text-neutral">
-          {/* Laptop-Hut <img className="w-20" src={logo} alt="" /> */}
-        </a>
+        <div className="text-white text-xl flex gap-3">
+          <BsBriefcase />
+              <span>
+                Employ Me Now
+              </span>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
@@ -138,31 +133,15 @@ const NavBar = () => {
 
       <div className="navbar-end">
         {user?.uid && (
-          <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-20 rounded-full">
-            <img src={user?.photoURL} alt="" />
-        
+          <div>
+            <div className="avatar">
+              {" "}
+              <div className="w-24 rounded-full">
+                <img src={user?.photoURL} alt="" />
+              </div>{" "}
             </div>
-            <p className="text-acceent font-bold ">{user.displayName}</p>
-          </label>
-          <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-            <li>
-            <NavLink to="/updateProfile">Update Profile</NavLink>
-            </li>
-            {/* <li><a>Settings</a></li>
-            <li><a>Logout</a></li> */}
-          </ul>
-        </div>
-          // <div>
-          //   <div className="avatar">
-          //     {" "}
-          //     <div className="w-24 rounded-full">
-          //       <img src={user?.photoURL} alt="" />
-          //     </div>{" "}
-          //   </div>
-          //   <p className="text-acceent font-bold text-xl">{user.displayName}</p>
-          // </div>
+            <p className="text-acceent font-bold text-xl">{user.displayName}</p>
+          </div>
         )}
       </div>
     </div>

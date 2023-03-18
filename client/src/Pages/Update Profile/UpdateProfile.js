@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import "./UpdateProfile.css";
-// import sideimg from "../../Resources/Images/Backgrounds/signupbg.webp"
-// import SocialLogin from "../SocialLogin/SocialLogin";
+
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthContext/AuthProvider";
 import { toast } from "react-hot-toast";
@@ -23,6 +22,7 @@ const UpdateProfile = () => {
   const submit = (e) => {
     e.preventDefault();
     console.log(formFields);
+    exsubmit(e);
   };
 
   const addFields = () => {
@@ -44,6 +44,45 @@ const UpdateProfile = () => {
 
   // Educational Qualification
 
+
+
+  //experience
+  const [exformFields, exsetFormFields] = useState([
+    { jobtitle: "", companyname: "", From: "", to: "" },
+  ]);
+
+  const exhandleFormChange = (event, index) => {
+    let data = [...exformFields];
+    data[index][event.target.name] = event.target.value;
+    exsetFormFields(data);
+  };
+
+  const exsubmit = (e) => {
+    e.preventDefault();
+    console.log(exformFields);
+  };
+
+  const exaddFields = () => {
+    let object = {
+      jobtitle: "",
+      companyname: "",
+      From: "",
+      to: "",
+    };
+
+    exsetFormFields([...exformFields, object]);
+  };
+
+  const exremoveFields = (index) => {
+    let data = [...exformFields];
+    data.splice(index, 1);
+    exsetFormFields(data);
+  };
+
+  //experience
+
+  
+
   const navigate = useNavigate();
   const {
     register,
@@ -62,13 +101,6 @@ const UpdateProfile = () => {
   const imageHostKey = process.env.REACT_APP_imgbb_KEY;
   const { createUseremail, updateuserInfo, userInfo, SetUserInfo } =
     useContext(AuthContext);
-
-  const gotoLogin = () => {
-    console.log("login");
-    navigate("/login");
-  };
-  const gotoRestPassword = () => {};
-  const password = watch("password");
 
   const handleSignup = (data) => {
     setsignupError("");
@@ -90,28 +122,7 @@ const UpdateProfile = () => {
 
           // google sign up using password and email
 
-          createUseremail(data.email, data.password)
-            .then((result) => {
-              const user = result.user;
-              console.log(user);
-
-              handleupdateProfile(data.name, imgData.data.url);
-              // saveUser(
-              //   data.name,
-              //   data.email,
-              //   imgData.data.url,
-              //   data.role,
-              //   false
-              // );
-              toast.success("User Created Succesfully");
-
-              console.log(user);
-            })
-            .catch((error) => {
-              setsignupError(error);
-              toast.error("what a msitak");
-              console.log(error);
-            });
+         console.log(data)
         }
       });
 
@@ -173,11 +184,11 @@ const UpdateProfile = () => {
   // };
 
   return (
-    <div className="flex">
-      <div className=" basis-1/2 mx-auto">
-        <h1 className="font-bold">Basic Informations</h1>
+    <div>
+      <div className="text-left" >
+        <h1 className="font-bold text-center">Basic Informations</h1>
 
-        <div className=" w-80 mx-auto mt-10 ">
+        <div className=" w-96 mx-auto mt-10 ">
           <div className="photo mt-5 mb-6 ">
             <img
               src={
@@ -209,7 +220,6 @@ const UpdateProfile = () => {
                 type="text"
                 name="name"
                 placeholder="Enter your name"
-          
                 {...register("name", {
                   required: "name is required.",
                   pattern: {
@@ -310,8 +320,7 @@ const UpdateProfile = () => {
 
             <h1 className="text-xl">Educational Qualification</h1>
 
-          
-            <div >
+            <div>
               <form onSubmit={submit}>
                 {formFields.map((form, eindex) => {
                   return (
@@ -323,7 +332,7 @@ const UpdateProfile = () => {
                           type="text"
                           name="Name of Exam"
                           placeholder="Enter your Name of Exam"
-                           onChange={event => handleFormChange(eindex, event)}
+                          onChange={(event) => handleFormChange(eindex, event)}
                           {...register("NameofExam")}
                         />
                         {errors.NameofExam && (
@@ -340,7 +349,7 @@ const UpdateProfile = () => {
                           type="text"
                           name="Institution"
                           placeholder="Enter your Institution"
-                           onChange={event => handleFormChange(eindex, event)}
+                          onChange={(event) => handleFormChange(eindex, event)}
                           {...register("Institution")}
                         />
                         {errors.Institution && (
@@ -357,7 +366,7 @@ const UpdateProfile = () => {
                           type="text"
                           name="cgpaorgrade"
                           placeholder="Enter your cgpaorgrade"
-                           onChange={event => handleFormChange(eindex, event)}
+                          onChange={(event) => handleFormChange(eindex, event)}
                           {...register("cgpaorgrade")}
                         />
                         {errors.cgpaorgrade && (
@@ -374,7 +383,7 @@ const UpdateProfile = () => {
                           type="text"
                           name="PassingYearI"
                           placeholder="Enter your PassingYearI"
-                           onChange={event => handleFormChange(eindex, event)}
+                          onChange={(event) => handleFormChange(eindex, event)}
                           {...register("PassingYearI")}
                         />
                         {errors.PassingYearI && (
@@ -392,23 +401,15 @@ const UpdateProfile = () => {
                 })}
               </form>
               <button onClick={addFields}>Add More..</button>
-
-            
             </div>
 
-
-
-             {/* Experiences  */}
-
-
-
+            {/* Experiences  */}
 
             <div className="divider"></div>
 
             <h1 className="text-xl">Experience</h1>
 
-          
-            <div >
+            <div>
               <form onSubmit={submit}>
                 {formFields.map((form, exindex) => {
                   return (
@@ -420,13 +421,11 @@ const UpdateProfile = () => {
                           type="text"
                           name="Job Title"
                           placeholder="Enter your Job Title"
-                           onChange={event => handleFormChange(exindex, event)}
+                          onChange={(event) => exhandleFormChange(exindex, event)}
                           {...register("jobtitle")}
                         />
                         {errors.jobtitle && (
-                          <p className="errorMsg">
-                            {errors.jobtitle.message}
-                          </p>
+                          <p className="errorMsg">{errors.jobtitle.message}</p>
                         )}
                       </div>
 
@@ -437,7 +436,7 @@ const UpdateProfile = () => {
                           type="text"
                           name="companyname"
                           placeholder="Enter your companyname"
-                           onChange={event => handleFormChange(exindex, event)}
+                          onChange={(event) => exhandleFormChange(exindex, event)}
                           {...register("companyname")}
                         />
                         {errors.companyname && (
@@ -454,13 +453,11 @@ const UpdateProfile = () => {
                           type="text"
                           name="From"
                           placeholder="Enter your From"
-                           onChange={event => handleFormChange(exindex, event)}
+                          onChange={(event) => exhandleFormChange(exindex, event)}
                           {...register("From")}
                         />
                         {errors.From && (
-                          <p className="errorMsg">
-                            {errors.From.message}
-                          </p>
+                          <p className="errorMsg">{errors.From.message}</p>
                         )}
                       </div>
 
@@ -471,17 +468,68 @@ const UpdateProfile = () => {
                           type="text"
                           name="to"
                           placeholder="Enter your to"
-                           onChange={event => handleFormChange(exindex, event)}
+                          onChange={(event) => exhandleFormChange(exindex, event)}
                           {...register("to")}
                         />
                         {errors.to && (
+                          <p className="errorMsg">{errors.to.message}</p>
+                        )}
+                      </div>
+
+                      <button onClick={() => exremoveFields(exindex)}>
+                        Remove
+                      </button>
+                    </div>
+                  );
+                })}
+              </form>
+              <button onClick={exaddFields}>Add More..</button>
+            </div>
+
+            {/* Skills  */}
+
+            <div className="divider"></div>
+
+            <h1 className="text-xl">Skills</h1>
+
+            <div>
+              <form onSubmit={submit}>
+                {formFields.map((form, sindex) => {
+                  return (
+                    <div key={sindex}>
+                      <div className="form-control ">
+                        <label>Skillname</label>
+                        <input
+                          className=" w-full input  input-bordered "
+                          type="text"
+                          name="Job Title"
+                          placeholder="Enter your Job Title"
+                          onChange={(event) => handleFormChange(sindex, event)}
+                          {...register("Skillname")}
+                        />
+                        {errors.Skillname && (
+                          <p className="errorMsg">{errors.Skillname.message}</p>
+                        )}
+                      </div>
+
+                      <div className="form-control ">
+                        <label>Experienceyear</label>
+                        <input
+                          className=" w-full input  input-bordered "
+                          type="text"
+                          name="Experienceyear"
+                          placeholder="Enter your Experienceyear"
+                          onChange={(event) => handleFormChange(sindex, event)}
+                          {...register("Experienceyear")}
+                        />
+                        {errors.Experienceyear && (
                           <p className="errorMsg">
-                            {errors.to.message}
+                            {errors.Experienceyear.message}
                           </p>
                         )}
                       </div>
 
-                      <button onClick={() => removeFields(exindex)}>
+                      <button onClick={() => removeFields(sindex)}>
                         Remove
                       </button>
                     </div>
@@ -489,165 +537,79 @@ const UpdateProfile = () => {
                 })}
               </form>
               <button onClick={addFields}>Add More..</button>
-
-             
             </div>
 
+            {/* Projects */}
 
+            <div className="divider"></div>
 
+            <h1 className="text-xl">Skills</h1>
 
-              {/* Skills  */}
+            <div>
+              <form onSubmit={submit}>
+                {formFields.map((form, pindex) => {
+                  return (
+                    <div key={pindex}>
+                      <div className="form-control ">
+                        <label>ProjectTitle</label>
+                        <input
+                          className=" w-full input  input-bordered "
+                          type="text"
+                          name="Job Title"
+                          placeholder="Enter your Job Title"
+                          onChange={(event) => handleFormChange(pindex, event)}
+                          {...register("ProjectTitle")}
+                        />
+                        {errors.ProjectTitle && (
+                          <p className="errorMsg">
+                            {errors.ProjectTitle.message}
+                          </p>
+                        )}
+                      </div>
 
+                      <div className="form-control ">
+                        <label>ProjectDescription</label>
+                        <input
+                          className=" w-full input  input-bordered "
+                          type="text"
+                          name="ProjectDescription"
+                          placeholder="Enter your ProjectDescription"
+                          onChange={(event) => handleFormChange(pindex, event)}
+                          {...register("ProjectDescription")}
+                        />
+                        {errors.ProjectDescription && (
+                          <p className="errorMsg">
+                            {errors.ProjectDescription.message}
+                          </p>
+                        )}
+                      </div>
 
+                      <div className="form-control ">
+                        <label>ProjectLink</label>
+                        <input
+                          className=" w-full input  input-bordered "
+                          type="text"
+                          name="ProjectLink"
+                          placeholder="Enter your ProjectLink"
+                          onChange={(event) => handleFormChange(pindex, event)}
+                          {...register("ProjectLink")}
+                        />
+                        {errors.ProjectLink && (
+                          <p className="errorMsg">
+                            {errors.ProjectLink.message}
+                          </p>
+                        )}
+                      </div>
 
-
-              <div className="divider"></div>
-
-<h1 className="text-xl">Skills</h1>
-
-
-<div >
-  <form onSubmit={submit}>
-    {formFields.map((form, sindex) => {
-      return (
-        <div key={sindex}>
-          <div className="form-control ">
-            <label>Skillname</label>
-            <input
-              className=" w-full input  input-bordered "
-              type="text"
-              name="Job Title"
-              placeholder="Enter your Job Title"
-               onChange={event => handleFormChange(sindex, event)}
-              {...register("Skillname")}
-            />
-            {errors.Skillname && (
-              <p className="errorMsg">
-                {errors.Skillname.message}
-              </p>
-            )}
-          </div>
-
-          <div className="form-control ">
-            <label>Experienceyear</label>
-            <input
-              className=" w-full input  input-bordered "
-              type="text"
-              name="Experienceyear"
-              placeholder="Enter your Experienceyear"
-               onChange={event => handleFormChange(sindex, event)}
-              {...register("Experienceyear")}
-            />
-            {errors.Experienceyear && (
-              <p className="errorMsg">
-                {errors.Experienceyear.message}
-              </p>
-            )}
-          </div>
-
-         
-
-          <button onClick={() => removeFields(sindex)}>
-            Remove
-          </button>
-        </div>
-      );
-    })}
-  </form>
-  <button onClick={addFields}>Add More..</button>
-
- 
-</div>
-
-
-
-
-
-
-              {/* Projects */}
-
-
-
-
-              <div className="divider"></div>
-
-<h1 className="text-xl">Skills</h1>
-
-
-<div >
-  <form onSubmit={submit}>
-    {formFields.map((form, pindex) => {
-      return (
-        <div key={pindex}>
-          <div className="form-control ">
-            <label>ProjectTitle</label>
-            <input
-              className=" w-full input  input-bordered "
-              type="text"
-              name="Job Title"
-              placeholder="Enter your Job Title"
-               onChange={event => handleFormChange(pindex, event)}
-              {...register("ProjectTitle")}
-            />
-            {errors.ProjectTitle && (
-              <p className="errorMsg">
-                {errors.ProjectTitle.message}
-              </p>
-            )}
-          </div>
-
-          <div className="form-control ">
-            <label>ProjectDescription</label>
-            <input
-              className=" w-full input  input-bordered "
-              type="text"
-              name="ProjectDescription"
-              placeholder="Enter your ProjectDescription"
-               onChange={event => handleFormChange(pindex, event)}
-              {...register("ProjectDescription")}
-            />
-            {errors.ProjectDescription && (
-              <p className="errorMsg">
-                {errors.ProjectDescription.message}
-              </p>
-            )}
-          </div>
-
-          <div className="form-control ">
-            <label>ProjectLink</label>
-            <input
-              className=" w-full input  input-bordered "
-              type="text"
-              name="ProjectLink"
-              placeholder="Enter your ProjectLink"
-               onChange={event => handleFormChange(pindex, event)}
-              {...register("ProjectLink")}
-            />
-            {errors.ProjectLink && (
-              <p className="errorMsg">
-                {errors.ProjectLink.message}
-              </p>
-            )}
-          </div>
-
-         
-
-          <button onClick={() => removeFields(pindex)}>
-            Remove
-          </button>
-        </div>
-      );
-    })}
-  </form>
-  <button onClick={addFields}>Add More..</button>
-
- 
-</div>
-
-
-
-
-
+                      <button onClick={() => removeFields(pindex)}>
+                        Remove
+                      </button>
+                    </div>
+                  );
+                })}
+              </form>
+              <button onClick={addFields}>Add More..</button>
+            </div>
 
             <div className="form-control mt-5">
               <label></label>

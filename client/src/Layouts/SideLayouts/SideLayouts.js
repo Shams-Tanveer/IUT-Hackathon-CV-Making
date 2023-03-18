@@ -5,8 +5,8 @@ import NavBar from "../../Shared/Navbar/Navbar";
 const SideLayouts = () => {
 
   const activelink =
-    "text-xl font-bold bg-gradient-to-r from-indigo-400 via-purple-500 to-indigo-600 Text-gradient text-white rounded-3xl h-1/2  ";
-  const normallink = "text-xl my-3 font-semibold text-neutral";
+    "text-xl font-bold bg-gradient-to-r from-[#374151] to-[#374151] Text-gradient text-white rounded-2xl   ";
+  const normallink = "text-xl my-3 font-semibold  text-error";
  
 
 
@@ -80,7 +80,7 @@ const SideLayouts = () => {
         </div>
         <div className="drawer-side ">
           <label htmlFor="dashboard-drawer" className="drawer-overlay "></label>
-          <ul className="menu p-4 w-80 bg-base-100 text-base-content  bg-red-400 ">
+          <ul className="menu p-4 w-60  bg-[#0c4a6e] ">
             {sidebarItems}
           </ul>
         </div>

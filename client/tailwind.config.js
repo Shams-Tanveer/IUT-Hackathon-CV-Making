@@ -16,7 +16,7 @@ module.exports = {
 
           accent: "#aefca9",
 
-          neutral: "#191919",
+          neutral: "#2D2432",
           "base-100": "#F5F4F6",
 
           info: "#338DD1",
@@ -25,7 +25,7 @@ module.exports = {
 
           warning: "#F2D073",
 
-          error: "#E04D61",
+          error: "#d1d5db",
         },
       },
       {
@@ -46,7 +46,11 @@ module.exports = {
 
           warning: "#CB9E15",
 
-          error: "#FA6187",
+          error: "#a8a29e",
+
+          bg2: "#293747",
+
+          bg3: "#a8a29e"
         },
       },
     ],
