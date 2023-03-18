@@ -53,7 +53,6 @@ const retrieveInfo = asyncHandler(async(req,res)=>{
         res.status(404);
         throw new Error("Information not found");
     }
-    console.log(attrributes.length)
     //for (var i=0; i<attrributes.length;i++){
     //    cvInfo[attrributes[i]] = cvInfo[attrributes[i]].replace(/[\r\n]/gm, '');
     //    if(cvInfo[attrributes[i]] !=""){
@@ -70,4 +69,20 @@ const retrieveInfo = asyncHandler(async(req,res)=>{
     res.status(200).json({cv:cvInfo});
 });
 
-module.exports = {collectInfo,retrieveInfo};
+
+
+const updateCv = asyncHandler(async(req,res)=>{
+    const cvInfo = await CvInfo.findOne({useremail: req.body.useremail});
+    if (!cvInfo){
+        res.status(404);
+        throw new Error("Information not found");
+    }
+    const updatedCvInfo = await CvInfo.findOneAndUpdate(
+        {useremail:req.body.useremail},
+        req.body,
+        {new: true}
+    );
+    res.status(200).json({cv:updatedCvInfo});
+});
+
+module.exports = {collectInfo,retrieveInfo,updateCv};

@@ -1,6 +1,6 @@
 const express = require("express");
 const validateToken = require("../middleWare/validateTokenHandle");
-const { collectInfo, retrieveInfo } = require("../controller/cvinfoController");
+const { collectInfo, retrieveInfo,updateCv } = require("../controller/cvinfoController");
 const router = express.Router()
 
 router.post("/updateabout", validateToken, async (req, res) => {
@@ -12,4 +12,6 @@ router.post("/updateabout", validateToken, async (req, res) => {
 });
 
 router.get("/getinfo", validateToken,retrieveInfo);
+
+router.put("/updatecv",validateToken,updateCv);
 module.exports = router;

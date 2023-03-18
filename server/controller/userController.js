@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const { getJWT } = require("../jwt/jwtAuth");
 const User = require("../model/userModel");
-
+const {getInfoWithOpenAi} = require("../controller/openaiController")
 
 const registerUser = asyncHandler(async(req,res)=>{
     const {name,imageUrl,email} = req.body;
@@ -72,7 +72,7 @@ const updateUserByEmail = asyncHandler(async(req,res)=>{
         throw new Error("user not found");
     }
     const updatedUser = await User.findOneAndUpdate(
-        req.params.email,
+        req.body.email,
         req.body,
         {new: true}
     );
@@ -91,4 +91,22 @@ const deleteUserByEmail = asyncHandler(async(req,res)=>{
     res.send({user:user})
 });
 
-module.exports = {registerUser,registerSocialUser,getUserByEmail,updateUserByEmail,deleteUserByEmail};
+
+const getRecommendation = asyncHandler(async(req,res)=>{
+
+    const {aboutme,desire} = req.body;
+    console.log(aboutme)
+    console.log(desire)
+    if(!aboutme || !desire){
+        res.status(400);
+        throw new Error("All fields are mandatory")
+    }
+    question = aboutme + " Now i want to switch my career to "+desire+" .Please write what skills and achievements must be included in cv for better career"
+    console.log(question)
+    answer = await getInfoWithOpenAi(question, 200);
+    console.log(answer);
+    res.status(200).send("Hi");
+
+});
+
+module.exports = {registerUser,registerSocialUser,getUserByEmail,getRecommendation,updateUserByEmail,deleteUserByEmail};

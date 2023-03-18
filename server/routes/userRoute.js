@@ -1,7 +1,7 @@
 const express = require("express");
 const {collectInfo} = require("../controller/cvinfoController");
 const router = express.Router()
-const {registerUser,registerSocialUser,getUserByEmail,updateUserByEmail,deleteUserByEmail} = require("../controller/userController");
+const {registerUser,registerSocialUser,getUserByEmail,updateUserByEmail,deleteUserByEmail, getRecommendation} = require("../controller/userController");
 const { getJWT } = require("../jwt/jwtAuth");
 const validateToken = require("../middleWare/validateTokenHandle");
 
@@ -10,6 +10,8 @@ router.post("/register/social",registerSocialUser);
 router.delete("/delete",validateToken,deleteUserByEmail);
 router.put("/update",validateToken,updateUserByEmail);
 router.get("/profile", getUserByEmail);
+router.post("/recommendation",validateToken,getRecommendation);
+
 router.post("/aboutme",validateToken, async(req,res)=>{
     const aboutMe = req.body.aboutme;
     const value = await collectInfo(aboutMe,req.email);
