@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../Contexts/AuthContext/AuthProvider";
+import { AuthContext } from "../../Contexts/AuthContext/AuthProvider";
 
 const SocialLogin = () => {
   const { signIn, userInfo, SetUserInfo } = useContext(AuthContext);

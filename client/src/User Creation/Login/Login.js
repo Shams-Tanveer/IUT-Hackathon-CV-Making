@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../Contexts/AuthContext/AuthProvider";
-import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+import { AuthContext } from "../../Contexts/AuthContext/AuthProvider";
+import SocialLogin from "../Social Login/SocialLogin";
 
 const Login = () => {
   const { signIn, userInfo, SetUserInfo } = useContext(AuthContext);

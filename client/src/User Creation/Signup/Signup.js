@@ -7,7 +7,7 @@ import { AuthContext } from "../../Contexts/AuthContext/AuthProvider";
 
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import SocialLogin from "../Social Login/SocialLogin";
 
 const Signup = () => {
   const {

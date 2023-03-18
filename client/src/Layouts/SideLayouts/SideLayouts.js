@@ -21,7 +21,7 @@ const SideLayouts = () => {
 
   return (
     <div>
-      <NavBar></NavBar>
+     
       <div className="drawer drawer-mobile ">
         <input
           id="dashboard-drawer"
