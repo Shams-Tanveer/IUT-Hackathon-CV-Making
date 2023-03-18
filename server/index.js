@@ -14,6 +14,8 @@ app.use(cors({
     credentials: true
 }))
 
+app.use("/openai",require("./routes/openAiRoute"));
+app.use("/cv",require("./routes/cvRoute"));
 app.use("/user",require("./routes/userRoute"));
 app.use(errorHanlde);
 

@@ -1,23 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import { ChatGPTAPI } from 'chatgpt'
 
 function App() {
+
+  async function chatplease() {
+    const api = new ChatGPTAPI({ apiKey: "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" })
+    let res = await api.sendMessage('What is OpenAI?');
+    console.log(res.text);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {chatplease}
     </div>
   );
 }

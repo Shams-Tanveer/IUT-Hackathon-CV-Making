@@ -28,6 +28,30 @@ const registerUser = asyncHandler(async(req,res)=>{
     }
 });
 
+const registerSocialUser = asyncHandler(async(req,res)=>{
+    const {name,imageUrl,email} = req.body;
+    if (!name || !imageUrl || !email){
+        res.status(400);
+        throw new Error("All fields are mandatory")
+    }
+    
+    const availableUser = await User.findOne({email});
+    if (availableUser){
+        const accessToken = getJWT(registerUser.email);
+        res.status(200).json({accessToken:accessToken});
+    }
+    const user = User({name,imageUrl,email});
+    
+    const registeredUser = await user.save();
+    if(registeredUser){
+        const accessToken = getJWT(registerUser.email);
+        res.status(200).json({accessToken:accessToken});
+    }else{
+        res.status(400);
+        throw new Error("User registration unsuccessful");
+    }
+});
+
 
 const getUserByEmail = asyncHandler(async(req,res)=>{
     const user = await User.findOne({email: req.body.email});
@@ -67,4 +91,4 @@ const deleteUserByEmail = asyncHandler(async(req,res)=>{
     res.send({user:user})
 });
 
-module.exports = {registerUser,getUserByEmail,updateUserByEmail,deleteUserByEmail};
+module.exports = {registerUser,registerSocialUser,getUserByEmail,updateUserByEmail,deleteUserByEmail};
