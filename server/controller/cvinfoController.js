@@ -48,7 +48,7 @@ const collectInfo = async (prompt, email) => {
 
 const retrieveInfo = asyncHandler(async(req,res)=>{
     //const cvInfo = await CvInfo.findOne({useremail: encryptData(req.body.email)});
-    const cvInfo = await CvInfo.findOne({useremail: req.body.email});
+    const cvInfo = await CvInfo.findOne({useremail: req.query.email});
     if (!cvInfo){
         res.status(404);
         throw new Error("Information not found");
