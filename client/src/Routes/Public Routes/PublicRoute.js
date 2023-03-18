@@ -1,4 +1,6 @@
 import Main from "../../Layouts/Main/Main";
+import Aboutus from "../../Pages/About Us/Aboutus";
+import BuiltinTemplates from "../../Pages/BuiltinTemplates/BuiltinTemplates";
 import Community from "../../Pages/Community/Community";
 import CustomBuild from "../../Pages/CustomBuild/CustomBuild";
 import Popular from "../../Pages/Popular/Popular";
@@ -44,6 +46,14 @@ const router=createBrowserRouter([
             {
                 path:"/signup",
                 element:<Signup></Signup>
+            },
+            {
+                path:"/templates",
+                element:<BuiltinTemplates></BuiltinTemplates>
+            },
+            {
+                path:"/aboutus",
+                element:<Aboutus></Aboutus>
             }
         ]
     }

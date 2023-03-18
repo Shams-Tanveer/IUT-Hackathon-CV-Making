@@ -77,8 +77,7 @@ const Signup = () => {
                 data.name,
                 data.email,
                 imgData.data.url,
-                data.role,
-                false
+            
               );
               toast("User Created Succesfully");
 
@@ -112,17 +111,17 @@ const Signup = () => {
 
   // function for inserting user in database
 
-  const saveUser = (name, email, photoURL, role, isverified) => {
+  const saveUser = (name, email, imageUrl) => {
     const newUser = {
       name,
+     
+      imageUrl,
       email,
-      photoURL,
-      role,
-      isverified,
+    
     };
     console.log("from save post", newUser);
-    fetch(`https://laptop-hut-server.vercel.app/user?email=${email}`, {
-      method: "PUT",
+    fetch(`/user/register`, {
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },
@@ -136,7 +135,7 @@ const Signup = () => {
   };
 
   const getUserToken = (email) => {
-    fetch(`https://laptop-hut-server.vercel.app/jwt?email=${email}`)
+    fetch(`/user/jwt?email=${email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.accessToken) {

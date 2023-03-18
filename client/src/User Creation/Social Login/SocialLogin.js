@@ -39,7 +39,7 @@ const SocialLogin = () => {
   };
 
   const getUserToken = (email) => {
-    fetch(`https://laptop-hut-server.vercel.app/jwt?email=${email}`)
+    fetch(`https://iut-hackathon-cv-making-woad.vercel.app/user/jwt?email=${email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.accessToken) {
@@ -52,17 +52,17 @@ const SocialLogin = () => {
       });
   };
 
-  const saveUser = (name, email, photoURL, role, isverified) => {
+  const saveUser = (name, email, imageUrl) => {
     const newUser = {
       name,
+      
+      imageUrl,
       email,
-      photoURL,
-      role,
-      isverified,
+     
     };
     console.log("from save post", newUser);
-    fetch(`https://laptop-hut-server.vercel.app/user?email=${email}`, {
-      method: "PUT",
+    fetch(`https://iut-hackathon-cv-making-woad.vercel.app/user/register/social`, {
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },
