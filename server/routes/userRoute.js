@@ -13,7 +13,6 @@ router.get("/profile", getUserByEmail);
 router.post("/aboutme",validateToken, async(req,res)=>{
     const aboutMe = req.body.aboutme;
     const value = await collectInfo(aboutMe,req.email);
-    console.log(value);
     res.status(value).send({ message:value==200 ? "Got" : "Wrong"});
 });
 router.get("/jwt",(req,res)=>{

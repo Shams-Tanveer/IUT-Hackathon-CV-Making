@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const getJWT = (email)=>{
     const accessToken = jwt.sign({email},
     process.env.ACCESS_TOKEN,
-    {expiresIn:"20m"}//1440m
+    {expiresIn:"1440m"}//1440m
     );
     return accessToken;
 }
