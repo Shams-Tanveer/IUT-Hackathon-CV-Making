@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { AiFillTwitterCircle ,AiFillLinkedin,AiFillYoutube } from "react-icons/ai";
-import UserContext from '../../../Contexts/AuthContext/AuthProvider';
+import UserContext, { AuthContext } from '../../../Contexts/AuthContext/AuthProvider';
 
 const TemplateComponent1 = ({pcv}) => {
   console.log("from",pcv)
+  const {user}=useContext(AuthContext)
+  console.log(user)
 
     return (
         <div>
@@ -22,7 +24,7 @@ const TemplateComponent1 = ({pcv}) => {
 
   <div class="py-10  flex flex-wrap justify-center">
       <div class="w-6/12 sm:w-4/12 px-4">
-        {/* <img src={user.imageUrl} alt="..." class="shadow rounded-full max-w-full h-auto align-middle border-none" /> */}
+        <img className='mx-auto' src={user.photoURL} alt="..." class="shadow rounded-full max-w-full h-auto align-middle border-none" />
     </div>
   </div>
 
@@ -63,7 +65,7 @@ const TemplateComponent1 = ({pcv}) => {
    <p>Facebook:{pcv?.facebook}</p>
     </div>
 
-    <div>
+    {/* <div>
 
     <h2 className="text-5xl py-2 text-teal-600 font-medium ">
     Research
@@ -71,7 +73,7 @@ const TemplateComponent1 = ({pcv}) => {
     </h2>
 
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    </div>
+    </div> */}
 
     <div>
 
@@ -82,7 +84,7 @@ const TemplateComponent1 = ({pcv}) => {
     {pcv?.cv.education}
     </div>
 
-    <div>
+    {/* <div>
 
     <h2 className="text-5xl py-2 text-teal-600 font-medium ">
           Journal
@@ -90,9 +92,9 @@ const TemplateComponent1 = ({pcv}) => {
     </h2>
 
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    </div>
+    </div> */}
 
-    <div>
+    {/* <div>
 
     <h2 className="text-5xl py-2 text-teal-600 font-medium ">
     Conference
@@ -121,10 +123,10 @@ const TemplateComponent1 = ({pcv}) => {
     </h2>
 
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    </div>
+    </div> */}
 
 
-    <div>
+    {/* <div>
 
     <h2 className="text-5xl py-2 text-teal-600 font-medium ">
     List of courses
@@ -132,7 +134,7 @@ const TemplateComponent1 = ({pcv}) => {
     </h2>
 
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    </div>
+    </div> */}
 
     <div>
 
@@ -154,7 +156,7 @@ const TemplateComponent1 = ({pcv}) => {
    {pcv?.cv.projects}
     </div>
 
-    <div>
+    {/* <div>
 
     <h2 className="text-5xl py-2 text-teal-600 font-medium ">
     Honors and
@@ -205,7 +207,7 @@ const TemplateComponent1 = ({pcv}) => {
     </h2>
 
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    </div>
+    </div> */}
     
   </div>
 

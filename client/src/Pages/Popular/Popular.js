@@ -258,7 +258,7 @@ const Popular = () => {
             <span className="label-text">Skills</span>
           </label>
           <input
-            defaultValue={cv?.cv?.skills === " " ? "" : cv.cv.skills}
+            defaultValue={cv?.cv?.skills === " " ? "" : cv?.cv?.skills}
             type="textarea"
             placeholder="Type here"
             className="input input-bordered w-96 textarea"

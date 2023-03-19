@@ -43,7 +43,7 @@ const SideLayouts = () => {
     className={({ isActive }) => (isActive ? activelink : normallink)}
     to="/community"
   >
-    Community
+    AI Recommendation
   </NavLink>
 </li>
 

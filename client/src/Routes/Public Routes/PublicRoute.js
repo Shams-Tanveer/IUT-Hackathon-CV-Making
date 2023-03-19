@@ -6,6 +6,7 @@ import TemplateComponent2 from "../../Pages/BuiltinTemplates/TemplateComponent2"
 import TemplateComponent1 from "../../Pages/BuiltinTemplates/TemplateComponents/TemplateComponent1";
 import Community from "../../Pages/Community/Community";
 import CustomBuild from "../../Pages/CustomBuild/CustomBuild";
+import Customize from "../../Pages/Cutomize/Customize";
 import Popular from "../../Pages/Popular/Popular";
 import UpdateProfile from "../../Pages/Update Profile/UpdateProfile";
 import UserInfo from "../../Pages/UserInfo/UserInfo";
@@ -36,7 +37,7 @@ const router=createBrowserRouter([
                     
                     {
                         path:"/community",
-                        element:<Community></Community>
+                        element:<Customize></Customize>
                     },
                     {
                         path:"/popular",
