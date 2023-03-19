@@ -1,33 +1,20 @@
-/*import BasicDocument from "./MyDocument";
+import logo from './logo.svg';
+import './App.css';
+import { RouterProvider } from 'react-router-dom';
+import router from './Routes/Public Routes/PublicRoute';
+import { Toaster } from 'react-hot-toast';
+
 function App() {
   return (
     <div className="App">
-      <BasicDocument />
+      <RouterProvider router={router}></RouterProvider>
+      <Toaster />
+      
+
+      
+  
     </div>
   );
-}
-export default App;*/
-import React, { useState } from "react";
-function App() {
-  const [files, setFiles] = useState("");
-
-    const handleChange = e => {
-      const fileReader = new FileReader();
-      fileReader.readAsText(e.target.files[0], "UTF-8");
-      fileReader.onload = e => {
-        console.log("e.target.result", JSON.parse(e.target.result));
-        setFiles(JSON.parse(e.target.result));
-      };
-    };
-    return (
-      <>
-        <h1>Upload Json file - Example</h1>
-
-        <input type="file" onChange={handleChange} />
-        <br />
-        {"uploaded file content -- " + files["movies"][0].title}
-      </>
-    );
 }
 
 export default App;
