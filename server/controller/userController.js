@@ -95,17 +95,14 @@ const deleteUserByEmail = asyncHandler(async(req,res)=>{
 const getRecommendation = asyncHandler(async(req,res)=>{
 
     const {aboutme,desire} = req.body;
-    console.log(aboutme)
-    console.log(desire)
     if(!aboutme || !desire){
         res.status(400);
         throw new Error("All fields are mandatory")
     }
     question = aboutme + " Now i want to switch my career to "+desire+" .Please write what skills and achievements must be included in cv for better career"
-    console.log(question)
-    answer = await getInfoWithOpenAi(question, 200);
+    answer = await getInfoWithOpenAi(question, 300);
     console.log(answer);
-    res.status(200).send("Hi");
+    res.status(200).send(answer);
 
 });
 
