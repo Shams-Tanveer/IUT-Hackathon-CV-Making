@@ -14,15 +14,7 @@ const SideLayouts = () => {
 
   const sidebarItems= (
     <>
-      <li>
-        <NavLink
-          className={({ isActive }) => (isActive ? activelink : normallink)}
-          to="/"
-        >
-          Home
-        </NavLink>
-
-      </li>
+   
       <li>
 
         
@@ -30,7 +22,17 @@ const SideLayouts = () => {
           className={({ isActive }) => (isActive ? activelink : normallink)}
           to="/popular"
         >
-          Popular
+         AI Generated CV
+        </NavLink>
+      </li>
+      <li>
+
+        
+      <NavLink
+          className={({ isActive }) => (isActive ? activelink : normallink)}
+          to="/createdcv"
+        >
+         Created CV
         </NavLink>
       </li>
 

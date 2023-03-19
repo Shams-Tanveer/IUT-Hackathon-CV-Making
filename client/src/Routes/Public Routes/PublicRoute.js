@@ -1,10 +1,14 @@
+import CVdownloader from "../../CVdownloader/CVdownloader";
 import Main from "../../Layouts/Main/Main";
 import Aboutus from "../../Pages/About Us/Aboutus";
 import BuiltinTemplates from "../../Pages/BuiltinTemplates/BuiltinTemplates";
+import TemplateComponent2 from "../../Pages/BuiltinTemplates/TemplateComponent2";
+import TemplateComponent1 from "../../Pages/BuiltinTemplates/TemplateComponents/TemplateComponent1";
 import Community from "../../Pages/Community/Community";
 import CustomBuild from "../../Pages/CustomBuild/CustomBuild";
 import Popular from "../../Pages/Popular/Popular";
 import UpdateProfile from "../../Pages/Update Profile/UpdateProfile";
+import UserInfo from "../../Pages/UserInfo/UserInfo";
 import Login from "../../User Creation/Login/Login";
 import Signup from "../../User Creation/Signup/Signup";
 
@@ -35,8 +39,20 @@ const router=createBrowserRouter([
                         element:<Community></Community>
                     },
                     {
-                        path:"popular",
+                        path:"/popular",
                         element:<Popular></Popular>
+                    },
+                    {
+                        path:"/userInfo",
+                        element:<UserInfo></UserInfo>
+                    },
+                    {
+                        path:"/pdftype",
+                        element:<CVdownloader></CVdownloader>
+                    },
+                    {
+                        path:"/createdcv",
+                        element:<TemplateComponent2></TemplateComponent2>
                     }
                 ]
             },
