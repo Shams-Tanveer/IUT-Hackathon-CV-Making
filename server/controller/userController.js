@@ -102,7 +102,7 @@ const getRecommendation = asyncHandler(async(req,res)=>{
     question = aboutme + " Now i want to switch my career to "+desire+" .Please write what skills and achievements must be included in cv for better career"
     answer = await getInfoWithOpenAi(question, 300);
     console.log(answer);
-    res.status(200).send(answer);
+    res.status(200).json({recommendation: answer});
 
 });
 
